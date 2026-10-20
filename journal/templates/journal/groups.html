@@ -5,7 +5,7 @@
 {% block content %}
     <title>Группы</title>
     <h2>{{ page_title }}</h2>
-    <p>Ниже представлен список только активных групп:</p>
+    <p><a href="{% url 'group_add' %}">Добавить новую группу</a></p>
     <ul>
         {% for groups in groups_list %}
             <li>

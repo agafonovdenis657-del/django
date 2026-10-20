@@ -4,7 +4,9 @@
 {% block content %}
     <title>Студенты</title>
     <h2>{{ page_title }}</h2>
-    <p>Только самые свеговые списки студентов.</p>
+
+    <p><a href="{% url 'student_add' %}">Добавить нового студента</a></p>
+
     <ul>
         {% for students in student_list %}
             <li>
