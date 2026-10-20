@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Детали студенты: {{ student.name }}{% endblock %}
+
+{% block content %}
+    <h2>Студенты</h2>
+    <p><strong>Название:</strong>  {{ student.name }}</p>
+    <p><strong>ID:</strong>  {{ student.id }}</p>
+
+    <a href="{% url 'students' %}">Назад к списку студентов</a>
+{% endblock %}

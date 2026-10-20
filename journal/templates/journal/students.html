@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}{{ page_title }} - Электронный журнал{% endblock %}
+
+{% block content %}
+    <title>Студенты</title>
+    <h2>{{ page_title }}</h2>
+    <p>Только самые свеговые списки студентов.</p>
+    <ul>
+        {% for students in student_list %}
+            <li>
+                <a href="{% url 'student_detail' student_id=students.id %}">{{ students }}</a>
+            </li>
+        {% empty %}
+            <li>Список студентов пуст</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
