@@ -17,6 +17,8 @@ urlpatterns = [
 
     path('group/<int:group_id>/edit/', views.group_edit_view, name='group_edit'),
 
+    path('group/<int:group_id>/delete/', views.group_delete_view, name='group_delete'),
+
     path('group/add/', views.group_add_view, name='group_add'),
 
     path('students/', views.student_view, name='students'),
@@ -24,6 +26,8 @@ urlpatterns = [
     path('student/<int:student_id>/', views.student_detail_view, name='student_detail'),
 
     path('student/<int:student_id>/edit/', views.student_edit_view, name='student_edit'),
+
+    path('group/<int:student_id>/delete/', views.student_delete_view, name='student_delete'),
 
     path('student/add/', views.student_add_view, name='student_add'),
 ]

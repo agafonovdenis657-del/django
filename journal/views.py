@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Group
 from .models import Student
 from .forms import GroupForm
@@ -70,7 +70,7 @@ def group_add_view(request):
     context = {
         'form': form,
     }
-    return render(request, 'journal/group_add.html', context)
+    return render(request, 'journal/group_form.html', context)
 
 
 def student_add_view(request):
@@ -86,7 +86,7 @@ def student_add_view(request):
         'form': form,
     }
 
-    return render(request, 'journal/student_add.html', context)
+    return render(request, 'journal/student_form.html', context)
 
 def group_edit_view(request, group_id):
     group = get_object_or_404(Group, pk=group_id)
@@ -120,3 +120,36 @@ def student_edit_view(request, student_id):
         'student': student,
     }
     return render(request, 'journal/student_form.html', context)
+
+def group_delete_view(request, group_id):
+
+    group = get_object_or_404(Group, pk=group_id)
+
+
+    if request.method == 'POST':
+        group.delete()
+
+        return redirect('groups')
+
+
+    context = {
+        'group': group
+    }
+    return render(request, 'journal/group_delete_confirm.html', context)
+
+def student_delete_view(request, student_id):
+
+    student = get_object_or_404(Student, pk=student_id)
+
+
+    if request.method == 'POST':
+        student.delete()
+
+        return redirect('students')
+
+
+    context = {
+        'student': student
+    }
+    return render(request, 'journal/student_delete_confirm.html', context)
+
